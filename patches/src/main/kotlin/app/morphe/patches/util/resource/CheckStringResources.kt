@@ -33,8 +33,8 @@
 
 package app.morphe.patches.util.resource
 
-import app.morphe.util.resource.StringResourceSanitizer.sanitizeAndroidResourceString
 import app.morphe.patches.all.misc.resources.localesAll
+import app.morphe.util.StringResourceSanitizer.sanitizeAndroidResourceString
 import app.morphe.util.inputStreamFromBundledResource
 import org.w3c.dom.Element
 import org.w3c.dom.Node

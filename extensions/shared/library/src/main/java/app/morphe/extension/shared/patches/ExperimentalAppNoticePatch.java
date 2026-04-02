@@ -15,7 +15,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings("unused")
@@ -60,7 +60,7 @@ public class ExperimentalAppNoticePatch {
         }
 
         // User already confirmed experimental.
-        return !BaseSettings.EXPERIMENTAL_APP_CONFIRMED.get().equals(appVersionName);
+        return !SharedSettings.EXPERIMENTAL_APP_CONFIRMED.get().equals(appVersionName);
     }
 
     /**
@@ -89,7 +89,7 @@ public class ExperimentalAppNoticePatch {
                     }, // OK button action.
                     null, // Cancel button action.
                     getString("morphe_experimental_app_version_dialog_confirm"), // Neutral button text.
-                    () -> BaseSettings.EXPERIMENTAL_APP_CONFIRMED.save(appVersionName), // Neutral button action.
+                    () -> SharedSettings.EXPERIMENTAL_APP_CONFIRMED.save(appVersionName), // Neutral button action.
                     true // Dismiss dialog on Neutral button click.
             );
 

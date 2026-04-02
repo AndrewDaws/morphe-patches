@@ -34,7 +34,7 @@
 package app.morphe.patches.all.misc.resources
 
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.util.resource.StringResourceSanitizer.sanitizeAndroidResourceString
+import app.morphe.util.StringResourceSanitizer.sanitizeAndroidResourceString
 import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
 import app.morphe.util.inputStreamFromBundledResource
