@@ -7,8 +7,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
+import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -28,6 +31,8 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/HidePlayerOverlayButtonsPatch;"
+private const val FILTER_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/youtube/patches/components/QuickActionButtonsFilter;"
 
 val hidePlayerOverlayButtonsPatch = bytecodePatch(
     name = "Hide player overlay buttons",
@@ -37,6 +42,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        lithoFilterPatch,
         resourceMappingPatch, // Used by fingerprints.
         versionCheckPatch
     )
@@ -45,6 +51,25 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
+            SwitchPreference("morphe_hide_quick_actions"),
+            PreferenceScreenPreference(
+                key = "morphe_quick_action_buttons_screen",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_hide_quick_actions"),
+                    SwitchPreference("morphe_hide_quick_actions_ask_button"),
+                    SwitchPreference("morphe_hide_quick_actions_comment_button"),
+                    SwitchPreference("morphe_hide_quick_actions_dislike_button"),
+                    SwitchPreference("morphe_hide_quick_actions_like_button"),
+                    SwitchPreference("morphe_hide_quick_actions_live_chat_button"),
+                    SwitchPreference("morphe_hide_quick_actions_more_button"),
+                    SwitchPreference("morphe_hide_quick_actions_more_videos_button"),
+                    SwitchPreference("morphe_hide_quick_actions_open_mix_playlist_button"),
+                    SwitchPreference("morphe_hide_quick_actions_open_playlist_button"),
+                    SwitchPreference("morphe_hide_quick_actions_save_to_playlist_button"),
+                    SwitchPreference("morphe_hide_quick_actions_share_button")
+                )
+            ),
             SwitchPreference("morphe_hide_autoplay_button"),
             SwitchPreference("morphe_hide_captions_button"),
             SwitchPreference("morphe_hide_cast_button"),
@@ -53,6 +78,8 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_player_control_buttons_background"),
             SwitchPreference("morphe_hide_player_previous_next_buttons"),
         )
+
+        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
 
         // region Hide player next/previous button.
 

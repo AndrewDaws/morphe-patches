@@ -185,8 +185,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_MEDICAL_PANELS = new BooleanSetting("morphe_hide_medical_panels", TRUE);
     public static final BooleanSetting HIDE_PLAYER_CONTROL_BUTTONS_BACKGROUND = new BooleanSetting("morphe_hide_player_control_buttons_background", FALSE, true);
     public static final BooleanSetting HIDE_PLAYER_PREVIOUS_NEXT_BUTTONS = new BooleanSetting("morphe_hide_player_previous_next_buttons", FALSE, true);
-    public static final BooleanSetting HIDE_QUICK_ACTIONS = new BooleanSetting("morphe_hide_quick_actions", FALSE);
-    public static final BooleanSetting HIDE_QUICK_ACTIONS_RELATED_VIDEOS = new BooleanSetting("morphe_hide_quick_actions_related_videos", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_PLAYER_RELATED_VIDEOS = new BooleanSetting("morphe_hide_player_related_videos", FALSE, true);
     public static final BooleanSetting HIDE_PLAYER_RELATED_VIDEOS_OVERLAY = new BooleanSetting("morphe_hide_player_related_videos_overlay", FALSE, true);
     public static final BooleanSetting HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES = new BooleanSetting("morphe_hide_subscribers_community_guidelines", TRUE);
@@ -206,6 +204,20 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<PlaylistIDPrefix> PLAY_ALL_BUTTON_TYPE = new EnumSetting<>("morphe_play_all_button_type", PlaylistIDPrefix.ALL_CONTENTS_WITH_TIME_DESCENDING,  parent(PLAY_ALL_BUTTON));
     public static final BooleanSetting PLAYBACK_SPEED_DIALOG_BUTTON = new BooleanSetting("morphe_playback_speed_dialog_button", FALSE, true);
     public static final BooleanSetting VIDEO_QUALITY_DIALOG_BUTTON = new BooleanSetting("morphe_video_quality_dialog_button", FALSE, true);
+
+    // Quick action buttons
+    public static final BooleanSetting HIDE_QUICK_ACTIONS = new BooleanSetting("morphe_hide_quick_actions", FALSE);
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_ASK_BUTTON = new BooleanSetting("morphe_hide_quick_actions_ask_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_LIKE_BUTTON = new BooleanSetting("morphe_hide_quick_actions_like_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_DISLIKE_BUTTON = new BooleanSetting("morphe_hide_quick_actions_dislike_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_COMMENT_BUTTON = new BooleanSetting("morphe_hide_quick_actions_comment_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_SAVE_TO_PLAYLIST_BUTTON = new BooleanSetting("morphe_hide_quick_actions_save_to_playlist_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_MORE_BUTTON = new BooleanSetting("morphe_hide_quick_actions_more_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_MORE_VIDEOS_BUTTON = new BooleanSetting("morphe_hide_quick_actions_more_videos_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_LIVE_CHAT_BUTTON = new BooleanSetting("morphe_hide_quick_actions_live_chat_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_OPEN_MIX_PLAYLIST_BUTTON = new BooleanSetting("morphe_hide_quick_actions_open_mix_playlist_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_OPEN_PLAYLIST_BUTTON = new BooleanSetting("morphe_hide_quick_actions_open_playlist_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_SHARE_BUTTON = new BooleanSetting("morphe_hide_quick_actions_share_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
 
     // Ambient mode
     public static final BooleanSetting DISABLE_AMBIENT_MODE = new BooleanSetting("morphe_disable_ambient_mode", FALSE, true);
