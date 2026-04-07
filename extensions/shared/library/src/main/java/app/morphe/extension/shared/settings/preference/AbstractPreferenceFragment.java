@@ -42,6 +42,7 @@ import androidx.annotation.Nullable;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 import java.text.Collator;
 import java.util.ArrayList;
@@ -64,12 +65,6 @@ import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings("deprecation")
 public abstract class AbstractPreferenceFragment extends PreferenceFragment {
-    // Cached Collator instance with its locale.
-    @Nullable
-    private static Locale cachedCollatorLocale;
-    @Nullable
-    private static Collator cachedCollator;
-
     private static class DebouncedListView extends ListView {
 
         public DebouncedListView(Context context) {
@@ -122,8 +117,14 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
-    @SuppressLint("StaticFieldLeak")
-    public static AbstractPreferenceFragment instance;
+    // Cached Collator instance with its locale.
+    @Nullable
+    private static Locale cachedCollatorLocale;
+
+    @Nullable
+    private static Collator cachedCollator;
+
+    public static WeakReference<AbstractPreferenceFragment> instance = new WeakReference<>(null);
 
     /**
      * Indicates that if a preference changes,
@@ -658,7 +659,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         currentUiMode = getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
-        instance = this;
+        instance = new WeakReference<>(this);
 
         configurationListener = new android.content.ComponentCallbacks2() {
             @SuppressLint("ChromeOsOnConfigurationChanged")
@@ -707,8 +708,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     @Override
     public void onDestroy() {
-        if (instance == this) {
-            instance = null;
+        if (instance.get() == this) {
+            instance = new WeakReference<>(null);
         }
         if (configurationListener != null && getActivity() != null) {
             getActivity().getApplicationContext().unregisterComponentCallbacks(configurationListener);

@@ -44,8 +44,9 @@ public class ImportExportPreference extends Preference implements Preference.OnP
     @Override
     public boolean onPreferenceClick(Preference preference) {
         try {
-            if (AbstractPreferenceFragment.instance != null) {
-                AbstractPreferenceFragment.instance.showImportExportTextDialog();
+            AbstractPreferenceFragment fragment = AbstractPreferenceFragment.instance.get();
+            if (fragment != null) {
+                fragment.showImportExportTextDialog();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onPreferenceClick failure", ex);
