@@ -443,9 +443,6 @@ Limitations:
     <string name="morphe_hide_player_popup_ads_title">Hide player popup ads</string>
     <string name="morphe_hide_player_popup_ads_summary_on">Player popup ads are hidden</string>
     <string name="morphe_hide_player_popup_ads_summary_off">Player popup ads are shown</string>
-    <string name="morphe_hide_product_card_title">Hide product card</string>
-    <string name="morphe_hide_product_card_summary_on">Product card under videos is hidden</string>
-    <string name="morphe_hide_product_card_summary_off">Product card under videos is shown</string>
     <string name="morphe_hide_self_sponsor_ads_title">Hide self sponsored cards</string>
     <string name="morphe_hide_self_sponsor_ads_summary_on">Self sponsored cards are hidden</string>
     <string name="morphe_hide_self_sponsor_ads_summary_off">Self sponsored cards are shown</string>
