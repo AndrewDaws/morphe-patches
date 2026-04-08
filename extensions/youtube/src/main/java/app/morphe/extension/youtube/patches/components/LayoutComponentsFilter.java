@@ -67,7 +67,7 @@ public final class LayoutComponentsFilter extends Filter {
 
     public enum ExpandableCardStyle {
         SHOWN,
-        HIDE_AI_SUMMARY_ONLY,
+        HIDE_PRODUCT_AND_SUMMARY,
         HIDDEN
     }
 
@@ -225,7 +225,8 @@ public final class LayoutComponentsFilter extends Filter {
 
         expandableMetadataBuffer = new ByteArrayFilterGroup(
                 null,
-                "PAfeedback_genai"
+                "PAfeedback_genai",
+                "gstatic.com/shopping"
         );
 
         final var compactChannelBar = new StringFilterGroup(
@@ -396,7 +397,7 @@ public final class LayoutComponentsFilter extends Filter {
             if (style == ExpandableCardStyle.HIDDEN) {
                 return true;
             }
-            if (style == ExpandableCardStyle.HIDE_AI_SUMMARY_ONLY) {
+            if (style == ExpandableCardStyle.HIDE_PRODUCT_AND_SUMMARY) {
                 return expandableMetadataBuffer.check(buffer).isFiltered();
             }
             return false;
