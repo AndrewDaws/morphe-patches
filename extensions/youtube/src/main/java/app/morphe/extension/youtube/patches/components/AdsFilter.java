@@ -39,6 +39,8 @@ public final class AdsFilter extends Filter {
 
     private final StringFilterGroup buyMovieAd;
     private final ByteArrayFilterGroup buyMovieAdBuffer;
+    private final StringFilterGroup productCard;
+    private final ByteArrayFilterGroup productCardBuffer;
     private final StringFilterGroup promotionBanner;
     private final ByteArrayFilterGroup promotionBannerBuffer;
 
@@ -133,6 +135,16 @@ public final class AdsFilter extends Filter {
                 "shopping_carousel.e" // Channel profile shopping shelf.
         );
 
+        productCard = new StringFilterGroup(
+                Settings.HIDE_PRODUCT_CARD,
+                "expandable_metadata"
+        );
+
+        productCardBuffer = new ByteArrayFilterGroup(
+                null,
+                "gstatic.com/shopping"
+        );
+
         promotionBanner = new StringFilterGroup(
                 null,
                 "statement_banner"
@@ -153,6 +165,7 @@ public final class AdsFilter extends Filter {
                 generalAds,
                 merchandise,
                 movieAds,
+                productCard,
                 promotionBanner,
                 selfSponsor,
                 shoppingLinks,
@@ -171,6 +184,10 @@ public final class AdsFilter extends Filter {
                        int contentIndex) {
         if (matchedGroup == buyMovieAd) {
             return contentIndex == 0 && buyMovieAdBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == productCard) {
+            return productCardBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == promotionBanner) {

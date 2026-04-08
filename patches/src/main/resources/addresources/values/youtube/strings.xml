@@ -84,9 +84,10 @@ Changes include:
     <string name="morphe_hide_compact_banner_title">Hide compact banners</string>
     <string name="morphe_hide_compact_banner_summary_on">Compact banners are hidden</string>
     <string name="morphe_hide_compact_banner_summary_off">Compact banners are shown</string>
-    <string name="morphe_hide_expandable_card_title">Hide expandable card</string>
-    <string name="morphe_hide_expandable_card_summary_on">Expandable card under videos is hidden</string>
-    <string name="morphe_hide_expandable_card_summary_off">Expandable card under videos is shown</string>
+    <string name="morphe_hide_expandable_card_title">Hide expandable cards</string>
+    <string name="morphe_hide_expandable_card_entry_1">Expandable cards under videos are shown</string>
+    <string name="morphe_hide_expandable_card_entry_2">Only Summary card under videos is hidden</string>
+    <string name="morphe_hide_expandable_card_entry_3">Expandable cards under videos are hidden</string>
     <string name="morphe_hide_floating_microphone_button_title">Hide floating microphone button</string>
     <string name="morphe_hide_floating_microphone_button_summary_on">Floating microphone button in search is hidden</string>
     <string name="morphe_hide_floating_microphone_button_summary_off">Floating microphone button in search is shown</string>
@@ -442,6 +443,9 @@ Limitations:
     <string name="morphe_hide_player_popup_ads_title">Hide player popup ads</string>
     <string name="morphe_hide_player_popup_ads_summary_on">Player popup ads are hidden</string>
     <string name="morphe_hide_player_popup_ads_summary_off">Player popup ads are shown</string>
+    <string name="morphe_hide_product_card_title">Hide product card</string>
+    <string name="morphe_hide_product_card_summary_on">Product card under videos is hidden</string>
+    <string name="morphe_hide_product_card_summary_off">Product card under videos is shown</string>
     <string name="morphe_hide_self_sponsor_ads_title">Hide self sponsored cards</string>
     <string name="morphe_hide_self_sponsor_ads_summary_on">Self sponsored cards are hidden</string>
     <string name="morphe_hide_self_sponsor_ads_summary_off">Self sponsored cards are shown</string>

@@ -57,12 +57,19 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup notifyMe;
     private final StringFilterGroup singleItemInformationPanel;
     private final StringFilterGroup expandableMetadata;
+    private final ByteArrayFilterGroup expandableMetadataBuffer;
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList;
+
+    public enum ExpandableCardStyle {
+        SHOWN,
+        HIDE_AI_SUMMARY_ONLY,
+        HIDDEN
+    }
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
@@ -212,8 +219,13 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         expandableMetadata = new StringFilterGroup(
-                Settings.HIDE_EXPANDABLE_CARD,
-                "inline_expander"
+                null,
+                "expandable_metadata"
+        );
+
+        expandableMetadataBuffer = new ByteArrayFilterGroup(
+                null,
+                "PAfeedback_genai"
         );
 
         final var compactChannelBar = new StringFilterGroup(
@@ -374,8 +386,20 @@ public final class LayoutComponentsFilter extends Filter {
 
         // The groups are excluded from the filter due to the exceptions list below.
         // Filter them separately here.
-        if (matchedGroup == notifyMe || matchedGroup == surveys || matchedGroup == expandableMetadata) {
+        if (matchedGroup == notifyMe || matchedGroup == surveys) {
             return true;
+        }
+
+        if (matchedGroup == expandableMetadata) {
+            ExpandableCardStyle style = Settings.HIDE_EXPANDABLE_CARD.get();
+
+            if (style == ExpandableCardStyle.HIDDEN) {
+                return true;
+            }
+            if (style == ExpandableCardStyle.HIDE_AI_SUMMARY_ONLY) {
+                return expandableMetadataBuffer.check(buffer).isFiltered();
+            }
+            return false;
         }
 
         if (matchedGroup == channelProfile) {
