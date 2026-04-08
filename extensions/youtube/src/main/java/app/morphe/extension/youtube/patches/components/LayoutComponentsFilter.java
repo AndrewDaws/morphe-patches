@@ -57,7 +57,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup notifyMe;
     private final StringFilterGroup singleItemInformationPanel;
     private final StringFilterGroup expandableMetadata;
-    private final ByteArrayFilterGroup expandableMetadataBuffer;
+    private final ByteArrayFilterGroup productCardBuffer;
+    private final ByteArrayFilterGroup summaryCardBuffer;
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
@@ -67,6 +68,8 @@ public final class LayoutComponentsFilter extends Filter {
 
     public enum ExpandableCardStyle {
         SHOWN,
+        HIDE_SUMMARY_ONLY,
+        HIDE_PRODUCT_ONLY,
         HIDE_PRODUCT_AND_SUMMARY,
         HIDDEN
     }
@@ -223,9 +226,13 @@ public final class LayoutComponentsFilter extends Filter {
                 "expandable_metadata"
         );
 
-        expandableMetadataBuffer = new ByteArrayFilterGroup(
+        summaryCardBuffer = new ByteArrayFilterGroup(
                 null,
-                "PAfeedback_genai",
+                "PAfeedback_genai"
+        );
+
+        productCardBuffer = new ByteArrayFilterGroup(
+                null,
                 "gstatic.com/shopping"
         );
 
@@ -393,12 +400,14 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == expandableMetadata) {
             ExpandableCardStyle style = Settings.HIDE_EXPANDABLE_CARD.get();
-
             if (style == ExpandableCardStyle.HIDDEN) {
                 return true;
-            }
-            if (style == ExpandableCardStyle.HIDE_PRODUCT_AND_SUMMARY) {
-                return expandableMetadataBuffer.check(buffer).isFiltered();
+            } else if (style == ExpandableCardStyle.HIDE_PRODUCT_AND_SUMMARY) {
+                return summaryCardBuffer.check(buffer).isFiltered() || productCardBuffer.check(buffer).isFiltered();
+            } else if (style == ExpandableCardStyle.HIDE_SUMMARY_ONLY) {
+                return summaryCardBuffer.check(buffer).isFiltered();
+            } else if (style == ExpandableCardStyle.HIDE_PRODUCT_ONLY) {
+                return productCardBuffer.check(buffer).isFiltered();
             }
             return false;
         }
