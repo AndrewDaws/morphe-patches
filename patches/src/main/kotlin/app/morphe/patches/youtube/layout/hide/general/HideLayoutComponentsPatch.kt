@@ -38,6 +38,7 @@ import app.morphe.patches.youtube.misc.litho.lazily.hookTreeNodeResult
 import app.morphe.patches.youtube.misc.litho.lazily.lazilyConvertedElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
@@ -231,7 +232,15 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_chips_shelf"),
             SwitchPreference("morphe_hide_community_posts"),
             SwitchPreference("morphe_hide_compact_banner"),
-            ListPreference("morphe_hide_expandable_card"),
+            if (is_20_26_or_greater) {
+                ListPreference("morphe_hide_expandable_card")
+            } else {
+                ListPreference(
+                    key = "morphe_hide_expandable_card",
+                    entriesKey = "morphe_hide_expandable_card_legacy_entries",
+                    entryValuesKey = "morphe_hide_expandable_card_legacy_entry_values"
+                )
+            },
             PreferenceCategory(
                 titleKey = null,
                 sorting = Sorting.UNSORTED,

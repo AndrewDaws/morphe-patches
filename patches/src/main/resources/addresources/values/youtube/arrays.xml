@@ -224,6 +224,14 @@
         <item>HIDE_PRODUCT_AND_SUMMARY</item>
         <item>HIDDEN</item>
     </string-array>
+    <string-array name="morphe_hide_expandable_card_legacy_entries">
+        <item>@string/morphe_hide_expandable_card_entry_1</item>
+        <item>@string/morphe_hide_expandable_card_entry_3</item>
+    </string-array>
+    <string-array name="morphe_hide_expandable_card_legacy_entry_values">
+        <item>SHOWN</item>
+        <item>HIDDEN</item>
+    </string-array>
 
     <!-- layout.captions.autoCaptionsPatch -->
     <string-array name="morphe_auto_captions_style_entries">
