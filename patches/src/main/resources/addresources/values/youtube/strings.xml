@@ -86,8 +86,8 @@ Changes include:
     <string name="morphe_hide_compact_banner_summary_off">Compact banners are shown</string>
     <string name="morphe_hide_expandable_card_title">Hide expandable cards</string>
     <string name="morphe_hide_expandable_card_entry_1">Expandable cards under videos are shown</string>
-    <string name="morphe_hide_expandable_card_entry_2">Only summary card under videos is hidden</string>
-    <string name="morphe_hide_expandable_card_entry_3">Only product card under videos is hidden</string>
+    <string name="morphe_hide_expandable_card_entry_2">Only product card under videos is hidden</string>
+    <string name="morphe_hide_expandable_card_entry_3">Only summary card under videos is hidden</string>
     <string name="morphe_hide_expandable_card_entry_4">Product and summary card under videos are hidden</string>
     <string name="morphe_hide_expandable_card_entry_5">Expandable cards under videos are hidden</string>
     <string name="morphe_hide_floating_microphone_button_title">Hide floating microphone button</string>

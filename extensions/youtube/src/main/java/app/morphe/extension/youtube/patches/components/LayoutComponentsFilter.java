@@ -68,8 +68,8 @@ public final class LayoutComponentsFilter extends Filter {
 
     public enum ExpandableCardStyle {
         SHOWN,
-        HIDE_SUMMARY_ONLY,
         HIDE_PRODUCT_ONLY,
+        HIDE_SUMMARY_ONLY,
         HIDE_PRODUCT_AND_SUMMARY,
         HIDDEN
     }
@@ -226,14 +226,14 @@ public final class LayoutComponentsFilter extends Filter {
                 "expandable_metadata"
         );
 
-        summaryCardBuffer = new ByteArrayFilterGroup(
-                null,
-                "PAfeedback_genai"
-        );
-
         productCardBuffer = new ByteArrayFilterGroup(
                 null,
                 "gstatic.com/shopping"
+        );
+
+        summaryCardBuffer = new ByteArrayFilterGroup(
+                null,
+                "PAfeedback_genai"
         );
 
         final var compactChannelBar = new StringFilterGroup(
@@ -402,12 +402,12 @@ public final class LayoutComponentsFilter extends Filter {
             ExpandableCardStyle style = Settings.HIDE_EXPANDABLE_CARD.get();
             if (style == ExpandableCardStyle.HIDDEN) {
                 return true;
-            } else if (style == ExpandableCardStyle.HIDE_PRODUCT_AND_SUMMARY) {
-                return summaryCardBuffer.check(buffer).isFiltered() || productCardBuffer.check(buffer).isFiltered();
+            }  else if (style == ExpandableCardStyle.HIDE_PRODUCT_ONLY) {
+                return productCardBuffer.check(buffer).isFiltered();
             } else if (style == ExpandableCardStyle.HIDE_SUMMARY_ONLY) {
                 return summaryCardBuffer.check(buffer).isFiltered();
-            } else if (style == ExpandableCardStyle.HIDE_PRODUCT_ONLY) {
-                return productCardBuffer.check(buffer).isFiltered();
+            } else if (style == ExpandableCardStyle.HIDE_PRODUCT_AND_SUMMARY) {
+                return summaryCardBuffer.check(buffer).isFiltered() || productCardBuffer.check(buffer).isFiltered();
             }
             return false;
         }
