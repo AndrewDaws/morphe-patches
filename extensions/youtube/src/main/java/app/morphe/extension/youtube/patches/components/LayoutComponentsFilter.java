@@ -67,11 +67,11 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroupList channelProfileGroupList;
 
     public enum ExpandableCardStyle {
-        SHOWN,
+        SHOW_ALL,
         HIDE_PRODUCT_ONLY,
         HIDE_SUMMARY_ONLY,
         HIDE_PRODUCT_AND_SUMMARY,
-        HIDDEN
+        HIDE_ALL
     }
 
     public LayoutComponentsFilter() {
@@ -400,16 +400,23 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == expandableMetadata) {
             ExpandableCardStyle style = Settings.HIDE_EXPANDABLE_CARD.get();
-            if (style == ExpandableCardStyle.HIDDEN) {
-                return true;
-            }  else if (style == ExpandableCardStyle.HIDE_PRODUCT_ONLY) {
-                return productCardBuffer.check(buffer).isFiltered();
-            } else if (style == ExpandableCardStyle.HIDE_SUMMARY_ONLY) {
-                return summaryCardBuffer.check(buffer).isFiltered();
-            } else if (style == ExpandableCardStyle.HIDE_PRODUCT_AND_SUMMARY) {
-                return summaryCardBuffer.check(buffer).isFiltered() || productCardBuffer.check(buffer).isFiltered();
+            switch (style) {
+                case HIDE_ALL -> {
+                    return true;
+                }
+                case HIDE_PRODUCT_ONLY -> {
+                    return productCardBuffer.check(buffer).isFiltered();
+                }
+                case HIDE_SUMMARY_ONLY -> {
+                    return summaryCardBuffer.check(buffer).isFiltered();
+                }
+                case HIDE_PRODUCT_AND_SUMMARY -> {
+                    return summaryCardBuffer.check(buffer).isFiltered() || productCardBuffer.check(buffer).isFiltered();
+                }
+                default -> {
+                    return false;
+                }
             }
-            return false;
         }
 
         if (matchedGroup == channelProfile) {
