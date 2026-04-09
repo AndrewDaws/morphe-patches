@@ -240,7 +240,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     entryValuesKey = "morphe_hide_expandable_card_legacy_entry_values"
                 )
             },
-            SwitchPreference("morphe_hide_explore_topics_shelf"),
             PreferenceCategory(
                 titleKey = null,
                 sorting = Sorting.UNSORTED,

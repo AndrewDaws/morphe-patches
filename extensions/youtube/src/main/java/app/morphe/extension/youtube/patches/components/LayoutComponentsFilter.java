@@ -93,7 +93,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         final var exploreTopicsShelf = new StringFilterGroup(
-                Settings.HIDE_EXPLORE_TOPICS_SHELF,
+                Settings.HIDE_HORIZONTAL_SHELVES,
                 "chips_shelf"
         );
 
