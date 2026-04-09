@@ -229,7 +229,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
             ),
             SwitchPreference("morphe_hide_album_cards"),
             SwitchPreference("morphe_hide_artist_cards"),
-            SwitchPreference("morphe_hide_chips_shelf"),
             SwitchPreference("morphe_hide_community_posts"),
             SwitchPreference("morphe_hide_compact_banner"),
             if (is_20_26_or_greater) {
@@ -241,6 +240,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     entryValuesKey = "morphe_hide_expandable_card_legacy_entry_values"
                 )
             },
+            SwitchPreference("morphe_hide_explore_topics_shelf"),
             PreferenceCategory(
                 titleKey = null,
                 sorting = Sorting.UNSORTED,

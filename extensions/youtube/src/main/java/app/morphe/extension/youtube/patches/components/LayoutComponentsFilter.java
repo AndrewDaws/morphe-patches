@@ -92,8 +92,8 @@ public final class LayoutComponentsFilter extends Filter {
                 "cell_divider"
         );
 
-        final var chipsShelf = new StringFilterGroup(
-                Settings.HIDE_CHIPS_SHELF,
+        final var exploreTopicsShelf = new StringFilterGroup(
+                Settings.HIDE_EXPLORE_TOPICS_SHELF,
                 "chips_shelf"
         );
 
@@ -104,7 +104,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         addIdentifierCallbacks(
                 cellDivider,
-                chipsShelf,
+                exploreTopicsShelf,
                 liveChatReplay
         );
 

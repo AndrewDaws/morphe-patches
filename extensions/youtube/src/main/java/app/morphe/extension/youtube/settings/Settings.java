@@ -96,10 +96,10 @@ public class Settings extends SharedYouTubeSettings {
     // Feed
     public static final BooleanSetting HIDE_ALBUM_CARDS = new BooleanSetting("morphe_hide_album_cards", FALSE, true);
     public static final BooleanSetting HIDE_ARTIST_CARDS = new BooleanSetting("morphe_hide_artist_cards", FALSE);
-    public static final BooleanSetting HIDE_CHIPS_SHELF = new BooleanSetting("morphe_hide_chips_shelf", TRUE);
     public static final BooleanSetting HIDE_COMMUNITY_POSTS = new BooleanSetting("morphe_hide_community_posts", FALSE);
     public static final BooleanSetting HIDE_COMPACT_BANNER = new BooleanSetting("morphe_hide_compact_banner", TRUE);
     public static final EnumSetting<LayoutComponentsFilter.ExpandableCardStyle> HIDE_EXPANDABLE_CARD = new EnumSetting<>("morphe_hide_expandable_card", LayoutComponentsFilter.ExpandableCardStyle.HIDE_ALL);
+    public static final BooleanSetting HIDE_EXPLORE_TOPICS_SHELF = new BooleanSetting("morphe_hide_explore_topics_shelf", TRUE);
     public static final BooleanSetting HIDE_FEED_FLYOUT_MENU = new BooleanSetting("morphe_hide_feed_flyout_menu", FALSE);
     public static final StringSetting  HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS = new StringSetting("morphe_hide_feed_flyout_menu_filter_strings", "", true, parent(HIDE_FEED_FLYOUT_MENU));
     public static final BooleanSetting HIDE_FILTER_BAR_FEED_IN_FEED = new BooleanSetting("morphe_hide_filter_bar_feed_in_feed", FALSE, true);

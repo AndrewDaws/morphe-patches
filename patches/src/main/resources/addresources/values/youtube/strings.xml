@@ -75,9 +75,6 @@ Changes include:
     <string name="morphe_hide_artist_cards_title">Hide artist cards</string>
     <string name="morphe_hide_artist_cards_summary_on">Artist cards are hidden</string>
     <string name="morphe_hide_artist_cards_summary_off">Artist cards are shown</string>
-    <string name="morphe_hide_chips_shelf_title">Hide chips shelf</string>
-    <string name="morphe_hide_chips_shelf_summary_on">Chips shelf is hidden</string>
-    <string name="morphe_hide_chips_shelf_summary_off">Chips shelf is shown</string>
     <string name="morphe_hide_community_posts_title">Hide community posts</string>
     <string name="morphe_hide_community_posts_summary_on">Community posts are hidden</string>
     <string name="morphe_hide_community_posts_summary_off">Community posts are shown</string>
@@ -90,6 +87,9 @@ Changes include:
     <string name="morphe_hide_expandable_card_entry_3">Only summary card under videos is hidden</string>
     <string name="morphe_hide_expandable_card_entry_4">Product and summary card under videos are hidden</string>
     <string name="morphe_hide_expandable_card_entry_5">Expandable cards under videos are hidden</string>
+    <string name="morphe_hide_explore_topics_shelf_title">Hide \'Explore more topics\' shelf</string>
+    <string name="morphe_hide_explore_topics_shelf_summary_on">Explore more topics shelf is hidden</string>
+    <string name="morphe_hide_explore_topics_shelf_summary_off">Explore more topics shelf is shown</string>
     <string name="morphe_hide_floating_microphone_button_title">Hide floating microphone button</string>
     <string name="morphe_hide_floating_microphone_button_summary_on">Floating microphone button in search is hidden</string>
     <string name="morphe_hide_floating_microphone_button_summary_off">Floating microphone button in search is shown</string>
