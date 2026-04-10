@@ -46,7 +46,7 @@ public final class QuickActionButtonsFilter extends Filter {
                         "comments_entry_point_button"
                 ),
                 new StringFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_SAVE_TO_PLAYLIST_BUTTON,
+                        Settings.HIDE_QUICK_ACTIONS_SAVE_BUTTON,
                         "|save_to_playlist_button"
                 ),
                 new StringFilterGroup(
@@ -77,12 +77,12 @@ public final class QuickActionButtonsFilter extends Filter {
                         "yt_outline_experimental_message_bubble_overlap"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_OPEN_MIX_PLAYLIST_BUTTON,
+                        Settings.HIDE_QUICK_ACTIONS_MIX_PLAYLIST_BUTTON,
                         "yt_outline_experimental_mix",
                         "yt_outline_youtube_mix"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_OPEN_PLAYLIST_BUTTON,
+                        Settings.HIDE_QUICK_ACTIONS_PLAYLIST_BUTTON,
                         "yt_outline_list_play_arrow",
                         "yt_outline_experimental_list_play_arrow"
                 ),

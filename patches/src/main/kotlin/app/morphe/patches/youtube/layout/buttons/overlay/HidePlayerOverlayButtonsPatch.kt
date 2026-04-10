@@ -55,18 +55,19 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 key = "morphe_quick_actions_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_quick_actions"),
                     SwitchPreference("morphe_hide_quick_actions_ask_button"),
                     SwitchPreference("morphe_hide_quick_actions_comment_button"),
                     SwitchPreference("morphe_hide_quick_actions_dislike_button"),
                     SwitchPreference("morphe_hide_quick_actions_like_button"),
                     SwitchPreference("morphe_hide_quick_actions_live_chat_button"),
+                    SwitchPreference("morphe_hide_quick_actions_mix_playlist_button"),
                     SwitchPreference("morphe_hide_quick_actions_more_button"),
                     SwitchPreference("morphe_hide_quick_actions_more_videos_button"),
-                    SwitchPreference("morphe_hide_quick_actions_open_mix_playlist_button"),
-                    SwitchPreference("morphe_hide_quick_actions_open_playlist_button"),
-                    SwitchPreference("morphe_hide_quick_actions_save_to_playlist_button"),
-                    SwitchPreference("morphe_hide_quick_actions_share_button")
+                    SwitchPreference("morphe_hide_quick_actions_playlist_button"),
+                    SwitchPreference("morphe_hide_quick_actions_save_button"),
+                    SwitchPreference("morphe_hide_quick_actions_share_button"),
+                    SwitchPreference("morphe_hide_quick_actions"),
+
                 )
             ),
             SwitchPreference("morphe_hide_autoplay_button"),
