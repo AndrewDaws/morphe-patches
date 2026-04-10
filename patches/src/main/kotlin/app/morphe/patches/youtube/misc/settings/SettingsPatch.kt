@@ -310,7 +310,7 @@ val settingsPatch = bytecodePatch(
 /**
  * Modifies the activity to show Morphe settings instead of its original purpose.
  */
-context(BytecodePatchContext)
+context(patchContext: BytecodePatchContext)
 internal fun modifyActivityForSettingsInjection(
     activityOnCreateFingerprint: Fingerprint,
     extensionClassType: String,
@@ -348,6 +348,7 @@ internal fun modifyActivityForSettingsInjection(
         MutableMethodImplementation(3),
     ).toMutable().apply {
         addInstructions(
+            0,
             """
                 invoke-static { p1 }, $BASE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->getAttachBaseContext(Landroid/content/Context;)Landroid/content/Context;
                 move-result-object p1
@@ -373,6 +374,7 @@ internal fun modifyActivityForSettingsInjection(
         val invokeFinishOpcode = if (isYouTubeMusic) "invoke-super" else "invoke-virtual"
 
         addInstructions(
+            0,
             """
                 invoke-static {}, $extensionClassType->$extensionMethodName()Z
                 move-result v0

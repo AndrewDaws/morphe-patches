@@ -18,17 +18,6 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-internal var playerOverlayChip = -1L
-    private set
-internal var historyMenuItem = -1L
-    private set
-internal var offlineSettingsMenuItem = -1L
-    private set
-internal var searchButton = -1L
-    private set
-internal var topBarMenuItemImageView = -1L
-    private set
-
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/HideButtonsPatch;"
 
 @Suppress("unused")
@@ -45,11 +34,9 @@ val hideButtons = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        playerOverlayChip = getResourceId(ResourceType.ID, "player_overlay_chip")
-        historyMenuItem = getResourceId(ResourceType.ID, "history_menu_item")
-        offlineSettingsMenuItem = getResourceId(ResourceType.ID, "offline_settings_menu_item")
-        searchButton = getResourceId(ResourceType.LAYOUT, "search_button")
-        topBarMenuItemImageView = getResourceId(ResourceType.ID, "top_bar_menu_item_image_view")
+        val playerOverlayChip = getResourceId(ResourceType.ID, "player_overlay_chip")
+        val searchButton = getResourceId(ResourceType.LAYOUT, "search_button")
+        val topBarMenuItemImageView = getResourceId(ResourceType.ID, "top_bar_menu_item_image_view")
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_music_hide_cast_button"),

@@ -166,6 +166,7 @@ val seekbarColorPatch = bytecodePatch(
                 MutableMethodImplementation(2),
             ).toMutable().apply {
                 addInstructions(
+                    0,
                     """
                         invoke-virtual { p0, p1 }, Lcom/airbnb/lottie/LottieAnimationView;->$setAnimationIntName(I)V
                         return-void
@@ -208,6 +209,7 @@ val seekbarColorPatch = bytecodePatch(
                 val methodOpcode = if (is_21_02_or_greater) "invoke-direct" else "invoke-virtual"
 
                 addInstructions(
+                    0,
                     """
                         invoke-static { p1, p2 }, $factoryStreamClass->$factoryStreamName(Ljava/io/InputStream;Ljava/lang/String;)$factoryStreamReturnType
                         move-result-object v0

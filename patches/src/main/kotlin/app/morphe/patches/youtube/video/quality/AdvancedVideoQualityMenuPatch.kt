@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -5,9 +15,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
@@ -16,11 +23,6 @@ import app.morphe.patches.youtube.misc.recyclerviewtree.hook.addRecyclerViewTree
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHookPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-
-internal var videoQualityBottomSheetListFragmentTitle = -1L
-    private set
-internal var videoQualityQuickMenuAdvancedMenuDescription = -1L
-    private set
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/playback/quality/AdvancedVideoQualityMenuPatch;"
@@ -33,24 +35,12 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
         sharedExtensionPatch,
         settingsPatch,
         lithoFilterPatch,
-        recyclerViewTreeHookPatch,
-        resourceMappingPatch
+        recyclerViewTreeHookPatch
     )
 
     execute {
         settingsMenuVideoQualityGroup.add(
             SwitchPreference("morphe_advanced_video_quality_menu")
-        )
-
-        // Used for the old type of the video quality menu.
-        videoQualityBottomSheetListFragmentTitle = getResourceId(
-            ResourceType.LAYOUT,
-            "video_quality_bottom_sheet_list_fragment_title",
-        )
-
-        videoQualityQuickMenuAdvancedMenuDescription = getResourceId(
-            ResourceType.STRING,
-            "video_quality_quick_menu_advanced_menu_description",
         )
 
         // region Patch for the old type of the video quality menu.

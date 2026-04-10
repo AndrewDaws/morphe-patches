@@ -203,7 +203,7 @@ internal object SearchButtonsVisibilityFingerprint : Fingerprint(
 internal object PivotBarRendererFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     parameters = listOf("L"),
-    returnType = "Lj\$/util/Optional;",
+    returnType = "Lj$/util/Optional;",
     filters = listOf(
         literal(117501096L),
         opcode(Opcode.IF_NE),

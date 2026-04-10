@@ -2,8 +2,8 @@ package app.morphe.patches.music.layout.buttons
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.util.containsLiteralInstruction
-import app.morphe.util.customLiteral
+import app.morphe.patches.shared.misc.mapping.ResourceType
+import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -16,7 +16,9 @@ internal object MediaRouteButtonFingerprint : Fingerprint(
 internal object PlayerOverlayChipFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
-    custom = customLiteral { playerOverlayChip } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "player_overlay_chip")
+    )
 )
 
 internal object HistoryMenuItemFingerprint : Fingerprint(
@@ -26,11 +28,9 @@ internal object HistoryMenuItemFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_INTERFACE,
         Opcode.RETURN_VOID
-    ),
-    custom = { method, classDef ->
-        // TODO: Convert this to an instruction filter
-        method.containsLiteralInstruction(historyMenuItem) &&
-                (classDef.methods.count() == 5 || classDef.methods.count() == 4)
+    ) + resourceLiteral(ResourceType.ID, "history_menu_item"),
+    custom = { _, classDef ->
+        classDef.methods.count() == 5 || classDef.methods.count() == 4
     }
 )
 
@@ -41,12 +41,7 @@ internal object HistoryMenuItemOfflineTabFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_INTERFACE,
         Opcode.RETURN_VOID
-    ),
-    custom = { method, _ ->
-        // TODO: Convert this to instruction filters
-        method.containsLiteralInstruction(historyMenuItem) &&
-            method.containsLiteralInstruction(offlineSettingsMenuItem)
-    }
+    ) + resourceLiteral(ResourceType.ID, "history_menu_item") + resourceLiteral(ResourceType.ID, "offline_settings_menu_item")
 )
 
 internal object SearchActionViewFingerprint : Fingerprint(
@@ -54,15 +49,16 @@ internal object SearchActionViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf(),
-    custom = { method, _ ->
-        // TODO: Convert this to an instruction filter
-        method.containsLiteralInstruction(searchButton)
-    }
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "search_button")
+    )
 )
 
 internal object TopBarMenuItemImageViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf(),
-    custom = customLiteral { topBarMenuItemImageView } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "top_bar_menu_item_image_view")
+    )
 )

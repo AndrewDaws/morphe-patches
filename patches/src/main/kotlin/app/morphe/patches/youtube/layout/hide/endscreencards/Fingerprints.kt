@@ -7,7 +7,8 @@ import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.util.customLiteral
+import app.morphe.patches.shared.misc.mapping.ResourceType
+import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -21,8 +22,7 @@ internal object LayoutCircleFingerprint : Fingerprint(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
-    ),
-    custom = customLiteral { layoutCircle } // TODO: Convert this to an instruction filter
+    ) + resourceLiteral(ResourceType.LAYOUT, "endscreen_element_layout_circle")
 )
 
 internal object LayoutIconFingerprint : Fingerprint(
@@ -33,9 +33,7 @@ internal object LayoutIconFingerprint : Fingerprint(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
-
-        ),
-    custom = customLiteral { layoutIcon } // TODO: Convert this to an instruction filter
+    ) + resourceLiteral(ResourceType.LAYOUT, "endscreen_element_layout_icon")
 )
 
 internal object LayoutVideoFingerprint : Fingerprint(
@@ -48,8 +46,7 @@ internal object LayoutVideoFingerprint : Fingerprint(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
-    ),
-    custom = customLiteral { layoutVideo } // TODO: Convert this to an instruction filter
+    ) + resourceLiteral(ResourceType.LAYOUT, "endscreen_element_layout_video")
 )
 
 internal object ShowEndscreenCardsFingerprint : Fingerprint(

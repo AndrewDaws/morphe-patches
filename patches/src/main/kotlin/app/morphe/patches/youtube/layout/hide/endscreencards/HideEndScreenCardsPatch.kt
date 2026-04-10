@@ -5,8 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -15,13 +13,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-
-internal var layoutCircle = -1L
-    private set
-internal var layoutIcon = -1L
-    private set
-internal var layoutVideo = -1L
-    private set
 
 private val hideEndScreenCardsResourcePatch = resourcePatch {
     dependsOn(
@@ -33,12 +24,6 @@ private val hideEndScreenCardsResourcePatch = resourcePatch {
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_hide_end_screen_cards"),
         )
-
-        fun idOf(name: String) = getResourceId(ResourceType.LAYOUT, "endscreen_element_layout_$name")
-
-        layoutCircle = idOf("circle")
-        layoutIcon = idOf("icon")
-        layoutVideo = idOf("video")
     }
 }
 

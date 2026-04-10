@@ -3,7 +3,8 @@ package app.morphe.patches.youtube.layout.hide.infocards
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.string
-import app.morphe.util.customLiteral
+import app.morphe.patches.shared.misc.mapping.ResourceType
+import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -30,7 +31,6 @@ internal object InfoCardsMethodCallFingerprint : Fingerprint(
         Opcode.INVOKE_VIRTUAL,
         Opcode.IGET_OBJECT,
         Opcode.INVOKE_INTERFACE,
-    ),
-    strings = listOf ("Missing ControlsOverlayPresenter for InfoCards to work."),
-    custom = customLiteral { drawerResourceId } // TODO: Convert this to an instruction filter
+    ) + resourceLiteral(ResourceType.ID, "info_cards_drawer_header"),
+    strings = listOf ("Missing ControlsOverlayPresenter for InfoCards to work.")
 )

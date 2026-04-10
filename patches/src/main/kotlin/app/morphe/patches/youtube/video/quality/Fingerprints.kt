@@ -18,7 +18,8 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.util.customLiteral
+import app.morphe.patches.shared.misc.mapping.ResourceType
+import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -137,8 +138,7 @@ internal object VideoQualityMenuOptionsFingerprint : Fingerprint(
         Opcode.IF_EQZ,
         Opcode.IGET_BOOLEAN, // Use the quality menu, that contains the advanced menu.
         Opcode.IF_NEZ,
-    ),
-    custom = customLiteral { videoQualityQuickMenuAdvancedMenuDescription } // TODO: Convert this to an instruction filter
+    ) + resourceLiteral(ResourceType.STRING, "video_quality_quick_menu_advanced_menu_description")
 )
 
 internal object VideoQualityMenuViewInflateFingerprint : Fingerprint(
@@ -160,6 +160,5 @@ internal object VideoQualityMenuViewInflateFingerprint : Fingerprint(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
-    ),
-    custom = customLiteral { videoQualityBottomSheetListFragmentTitle } // TODO: Convert this to an instruction filter
+    ) + resourceLiteral(ResourceType.LAYOUT, "video_quality_bottom_sheet_list_fragment_title")
 )
