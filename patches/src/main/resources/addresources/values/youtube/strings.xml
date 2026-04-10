@@ -94,11 +94,14 @@ Changes include:
     <string name="morphe_hide_horizontal_shelves_summary_on">"Horizontal shelves are hidden, such as:
 
 • Breaking news
+• Community posts you may like
 • Continue watching
 • Explore more channels
 • Explore more topics
 • For You
+• Latest videos
 • Most relevant
+• Posts from Creator's Community
 • Shopping
 • Watch it again"</string>
     <string name="morphe_hide_horizontal_shelves_summary_off">Horizontal shelves are shown</string>
