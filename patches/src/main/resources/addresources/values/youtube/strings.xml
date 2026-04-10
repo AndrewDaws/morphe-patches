@@ -108,9 +108,6 @@ Changes include:
     <string name="morphe_hide_image_shelf_title">Hide image shelf</string>
     <string name="morphe_hide_image_shelf_summary_on">Image shelf in search results is hidden</string>
     <string name="morphe_hide_image_shelf_summary_off">Image shelf in search results is shown</string>
-    <string name="morphe_hide_latest_posts_title">Hide latest posts</string>
-    <string name="morphe_hide_latest_posts_summary_on">Latest posts are hidden</string>
-    <string name="morphe_hide_latest_posts_summary_off">Latest posts are shown</string>
     <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
     <string name="morphe_hide_latest_videos_button_title">Hide \'Latest videos\' button</string>
@@ -309,6 +306,9 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_members_shelf_title">Hide members shelf</string>
     <string name="morphe_hide_members_shelf_summary_on">Members shelf is hidden</string>
     <string name="morphe_hide_members_shelf_summary_off">Members shelf is shown</string>
+    <string name="morphe_hide_posts_shelf_title">Hide posts shelf</string>
+    <string name="morphe_hide_posts_shelf_summary_on">Posts shelf is hidden</string>
+    <string name="morphe_hide_posts_shelf_summary_off">Posts shelf is shown</string>
     <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_store_button_title">Hide Store button</string>
     <string name="morphe_hide_store_button_summary_on">Store button is hidden</string>

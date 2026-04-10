@@ -223,6 +223,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_join_button"),
                     SwitchPreference("morphe_hide_links_preview"),
                     SwitchPreference("morphe_hide_members_shelf"),
+                    SwitchPreference("morphe_hide_posts_shelf"),
                     SwitchPreference("morphe_hide_store_button"),
                     SwitchPreference("morphe_hide_subscribe_button_in_channel_page"),
                 ),
@@ -258,7 +259,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
             SwitchPreference("morphe_hide_image_shelf"),
-            SwitchPreference("morphe_hide_latest_posts"),
             SwitchPreference("morphe_hide_latest_videos_button"),
             SwitchPreference("morphe_hide_mix_playlists"),
             SwitchPreference("morphe_hide_movies_section"),

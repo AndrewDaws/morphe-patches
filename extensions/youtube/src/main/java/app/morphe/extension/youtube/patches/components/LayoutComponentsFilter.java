@@ -190,8 +190,8 @@ public final class LayoutComponentsFilter extends Filter {
                 "single_item_information_panel"
         );
 
-        final var latestPosts = new StringFilterGroup(
-                Settings.HIDE_LATEST_POSTS,
+        final var postsShelf = new StringFilterGroup(
+                Settings.HIDE_POSTS_SHELF,
                 "post_shelf"
         );
 
@@ -356,11 +356,11 @@ public final class LayoutComponentsFilter extends Filter {
                 forYouShelf,
                 imageShelf,
                 infoPanel,
-                latestPosts,
                 medicalPanel,
                 notifyMe,
                 paidPromotion,
                 playables,
+                postsShelf,
                 quickActions,
                 relatedVideos,
                 singleItemInformationPanel,
