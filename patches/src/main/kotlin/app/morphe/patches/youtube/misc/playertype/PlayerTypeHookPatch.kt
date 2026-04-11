@@ -46,6 +46,7 @@ val playerTypeHookPatch = bytecodePatch(
 
         val controlStateType = ControlsStateToStringFingerprint.originalClassDef.type
 
+        @Suppress("LocalVariableName")
         val VideoStateFingerprint = Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",

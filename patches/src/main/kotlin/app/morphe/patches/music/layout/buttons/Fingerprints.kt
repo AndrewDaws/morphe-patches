@@ -1,7 +1,9 @@
 package app.morphe.patches.music.layout.buttons
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.InstructionLocation.MatchAfterAnywhere
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.opcode
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -25,10 +27,11 @@ internal object HistoryMenuItemFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/Menu;"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_INTERFACE,
-        Opcode.RETURN_VOID
-    ) + resourceLiteral(ResourceType.ID, "history_menu_item"),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "history_menu_item"),
+        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterWithin(5)),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterAnywhere())
+    ),
     custom = { _, classDef ->
         classDef.methods.count() == 5 || classDef.methods.count() == 4
     }
@@ -38,10 +41,13 @@ internal object HistoryMenuItemOfflineTabFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/Menu;"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_INTERFACE,
-        Opcode.RETURN_VOID
-    ) + resourceLiteral(ResourceType.ID, "history_menu_item") + resourceLiteral(ResourceType.ID, "offline_settings_menu_item")
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "offline_settings_menu_item"),
+        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterWithin(5)),
+        resourceLiteral(ResourceType.ID, "history_menu_item", location = MatchAfterWithin(15)),
+        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterWithin(5)),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterAnywhere())
+    )
 )
 
 internal object SearchActionViewFingerprint : Fingerprint(

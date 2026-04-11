@@ -1,8 +1,10 @@
 package app.morphe.patches.youtube.misc.backgroundplayback
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
+import app.morphe.patcher.opcode
 import app.morphe.patches.shared.misc.mapping.ResourceType
 import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -45,31 +47,26 @@ internal object BackgroundPlaybackSettingsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.IF_EQZ,
-        Opcode.IF_NEZ,
-        Opcode.GOTO,
-    ) + resourceLiteral(ResourceType.STRING, "pref_background_and_offline_category")
+    filters = listOf(
+        resourceLiteral(ResourceType.STRING, "pref_background_and_offline_category")
+    )
 )
 
 internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "L", "L"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.CONST_4,
-        Opcode.IF_NE,
-        Opcode.SGET_OBJECT,
-        Opcode.IF_NE,
-        Opcode.IGET,
-        Opcode.CONST_4,
-        Opcode.IF_NE,
-        Opcode.IGET_OBJECT,
-    ) + literal(5)
+    filters = listOf(
+        literal(5),
+        opcode(Opcode.CONST_4, location = MatchAfterWithin(10)),
+        opcode(Opcode.IF_NE, location = MatchAfterWithin(5)),
+        opcode(Opcode.SGET_OBJECT, location = MatchAfterWithin(5)),
+        opcode(Opcode.IF_NE, location = MatchAfterWithin(5)),
+        opcode(Opcode.IGET, location = MatchAfterWithin(5)),
+        opcode(Opcode.CONST_4, location = MatchAfterWithin(5)),
+        opcode(Opcode.IF_NE, location = MatchAfterWithin(5)),
+        opcode(Opcode.IGET_OBJECT, location = MatchAfterWithin(5))
+    )
 )
 
 internal object ShortsBackgroundPlaybackFeatureFlagFingerprint : Fingerprint(
