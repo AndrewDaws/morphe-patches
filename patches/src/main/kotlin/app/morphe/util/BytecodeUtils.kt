@@ -65,7 +65,6 @@ import com.android.tools.smali.dexlib2.Opcode.MOVE_RESULT_WIDE
 import com.android.tools.smali.dexlib2.Opcode.RETURN
 import com.android.tools.smali.dexlib2.Opcode.RETURN_OBJECT
 import com.android.tools.smali.dexlib2.Opcode.RETURN_WIDE
-import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.MethodParameter
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -1406,14 +1405,3 @@ internal fun setExtensionIsPatchIncluded(patchExtensionClassType: String) {
 
     fingerprint.method.returnEarly(true)
 }
-
-/**
- * Set the custom condition for this fingerprint to check for a literal value.
- *
- * @param customLiteral The literal value.
- */
-@Deprecated("Instead use InstructionFilter and `literal()`")
-fun customLiteral(literalSupplier: () -> Long): ((method: Method, classDef: ClassDef) -> Boolean) =
-    { method, _ ->
-        method.containsLiteralInstruction(literalSupplier())
-    }
