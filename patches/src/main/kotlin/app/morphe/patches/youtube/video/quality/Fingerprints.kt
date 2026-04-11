@@ -162,6 +162,6 @@ internal object VideoQualityMenuViewInflateFingerprint : Fingerprint(
         opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
         opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
-        resourceLiteral(ResourceType.LAYOUT, "video_quality_bottom_sheet_list_fragment_title", location = MatchAfterWithin(10))
+        resourceLiteral(ResourceType.LAYOUT, "video_quality_bottom_sheet_list_fragment_title", location = MatchAfterAnywhere())
     )
 )
