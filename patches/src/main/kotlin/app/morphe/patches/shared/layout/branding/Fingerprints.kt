@@ -40,12 +40,12 @@ internal object NotificationBuilderFingerprint : Fingerprint(
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/app/Notification\$Builder;->setSmallIcon(II)Landroid/app/Notification\$Builder;"
+            smali = $$"Landroid/app/Notification$Builder;->setSmallIcon(II)Landroid/app/Notification$Builder;"
         ),
         string("key_action_priority"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/app/Notification\$Builder;->setColor(I)Landroid/app/Notification\$Builder;"
+            smali = $$"Landroid/app/Notification$Builder;->setColor(I)Landroid/app/Notification$Builder;"
         ),
     )
 )

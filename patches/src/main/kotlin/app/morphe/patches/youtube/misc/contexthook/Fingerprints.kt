@@ -22,7 +22,7 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal const val CLIENT_INFO_CLASS_DESCRIPTOR =
-    "Lcom/google/protos/youtube/api/innertube/InnertubeContext\$ClientInfo;"
+    $$"Lcom/google/protos/youtube/api/innertube/InnertubeContext$ClientInfo;"
 
 internal object AuthenticationChangeListenerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),

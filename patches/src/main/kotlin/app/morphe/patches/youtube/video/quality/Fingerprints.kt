@@ -86,7 +86,7 @@ internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;"
+            definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
         ),
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
@@ -96,7 +96,7 @@ internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
         newInstance("Ljava/util/ArrayList;"),
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;"
+            definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
         )
     ),
 )

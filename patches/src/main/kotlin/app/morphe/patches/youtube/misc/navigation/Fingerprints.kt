@@ -156,7 +156,7 @@ internal object InitializeBottomBarContainerFingerprint : Fingerprint(
         resourceLiteral(ResourceType.ID, "bottom_bar_container"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/view/View;->addOnLayoutChangeListener(Landroid/view/View\$OnLayoutChangeListener;)V"
+            smali = $$"Landroid/view/View;->addOnLayoutChangeListener(Landroid/view/View$OnLayoutChangeListener;)V"
         )
     )
 )

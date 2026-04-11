@@ -66,7 +66,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
 
 private const val EXTENSION_SETTING_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/NavigationBarPatch\$SettingsController;"
+    $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$SettingsController;"
 
 val navigationBarPatch = bytecodePatch(
     name = "Navigation bar",
@@ -344,7 +344,7 @@ val navigationBarPatch = bytecodePatch(
                 addInstruction(
                     copiedButtonRendererIndex + 1,
                     "invoke-static { v$copiedButtonRendererRegister, v$onClickListenerRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->setSearchBarOnClickListener(Lcom/google/protobuf/MessageLite;Landroid/view/View\$OnClickListener;)V"
+                            $$"$$EXTENSION_CLASS_DESCRIPTOR->setSearchBarOnClickListener(Lcom/google/protobuf/MessageLite;Landroid/view/View$OnClickListener;)V"
                 )
             }
         }
@@ -485,7 +485,7 @@ val navigationBarPatch = bytecodePatch(
                 addInstruction(
                     copiedButtonRendererIndex + 1,
                     "invoke-static { v$copiedButtonRendererRegister, v$onClickListenerRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->setSearchBarOnClickListener(Lcom/google/protobuf/MessageLite;Landroid/view/View\$OnClickListener;)V"
+                            $$"$$EXTENSION_CLASS_DESCRIPTOR->setSearchBarOnClickListener(Lcom/google/protobuf/MessageLite;Landroid/view/View$OnClickListener;)V"
                 )
             }
         }

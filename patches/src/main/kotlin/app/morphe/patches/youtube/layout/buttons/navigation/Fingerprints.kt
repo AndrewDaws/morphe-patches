@@ -171,7 +171,7 @@ internal object SearchResultButtonVisibilityFingerprint : Fingerprint(
         literal(45423782L), // lens search button feature flags.
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/view/View;->setOnClickListener(Landroid/view/View\$OnClickListener;)V"
+            smali = $$"Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V"
         ),
     )
 )

@@ -46,9 +46,9 @@ import java.lang.ref.WeakReference
 internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/shared/NavigationBar;"
 internal const val EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/shared/NavigationBar\$NavigationButton;"
+    $$"Lapp/morphe/extension/youtube/shared/NavigationBar$NavigationButton;"
 private const val EXTENSION_TOOLBAR_INTERFACE =
-    "Lapp/morphe/extension/youtube/shared/NavigationBar${'$'}AppCompatToolbarPatchInterface;"
+    $$"Lapp/morphe/extension/youtube/shared/NavigationBar$AppCompatToolbarPatchInterface;"
 
 private lateinit var hookNavigationButtonCreatedMethodRef : WeakReference<MutableMethod>
 

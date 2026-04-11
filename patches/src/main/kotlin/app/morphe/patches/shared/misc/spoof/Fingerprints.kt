@@ -13,7 +13,7 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
-    returnType = "Lorg/chromium/net/UrlRequest\$Builder;",
+    returnType = $$"Lorg/chromium/net/UrlRequest$Builder;",
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.IGET_OBJECT, // Moves the request URI string to a register to build the request with.
@@ -65,7 +65,7 @@ internal object BuildRequestFingerprint : Fingerprint(
         // L
         // L
         // L
-        // Lorg/chromium/net/UrlRequest\$Callback;
+        // Lorg/chromium/net/UrlRequest$Callback;
         // L
 
         // 20.16+ uses a refactored and extracted method:
@@ -96,7 +96,7 @@ internal object CreateStreamingDataFingerprint : Fingerprint(
     ),
     custom = { method, classDef ->
         classDef.fields.any { field ->
-            field.name == "a" && field.type.endsWith("/StreamingDataOuterClass\$StreamingData;")
+            field.name == "a" && field.type.endsWith($$"/StreamingDataOuterClass$StreamingData;")
         }
     }
 )
@@ -190,6 +190,6 @@ internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) = method.ind
             && reference.name == "newUrlRequestBuilder"
             && reference.parameterTypes.size == 3
             && reference.parameterTypes[0] == "Ljava/lang/String;"
-            && reference.parameterTypes[1] == "Lorg/chromium/net/UrlRequest\$Callback;"
+            && reference.parameterTypes[1] == $$"Lorg/chromium/net/UrlRequest$Callback;"
             && reference.parameterTypes[2] == "Ljava/util/concurrent/Executor;"
 }

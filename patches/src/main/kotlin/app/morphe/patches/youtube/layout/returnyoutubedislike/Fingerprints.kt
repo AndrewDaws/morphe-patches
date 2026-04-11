@@ -157,7 +157,7 @@ internal object LithoSpannableStringCreationFingerprint : Fingerprint(
 
         methodCall(
             name = "addOnLayoutChangeListener",
-            parameters = listOf("Landroid/view/View\$OnLayoutChangeListener;"),
+            parameters = listOf($$"Landroid/view/View$OnLayoutChangeListener;"),
         )
     )
 )

@@ -56,7 +56,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
                 replaceInstructions(
                     showDialogIndex,
                     "invoke-static { v$dialogRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
-                            "confirmDialog(Landroid/app/AlertDialog\$Builder;)Landroid/app/AlertDialog;",
+                            $$"confirmDialog(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;",
                 )
 
                 val dialogStyleIndex = it.instructionMatches.first().index

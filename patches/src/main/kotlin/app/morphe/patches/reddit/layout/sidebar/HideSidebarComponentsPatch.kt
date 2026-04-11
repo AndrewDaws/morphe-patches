@@ -22,7 +22,7 @@ internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/reddit/patches/HideSidebarComponentsPatch;"
 
 private const val EXTENSION_HEADER_ITEM_INTERFACE =
-    "Lapp/morphe/extension/reddit/patches/HideSidebarComponentsPatch\$HeaderItemInterface;"
+    $$"Lapp/morphe/extension/reddit/patches/HideSidebarComponentsPatch$HeaderItemInterface;"
 
 @Suppress("unused")
 val hideSidebarComponentsPatch = bytecodePatch(

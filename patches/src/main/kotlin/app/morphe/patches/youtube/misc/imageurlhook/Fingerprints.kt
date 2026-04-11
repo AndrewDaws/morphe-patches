@@ -51,8 +51,8 @@ private object MessageDigestImageURLParentFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         anyInstruction(
-            string("@#&=*+-_.,:!?()/~'%;\$"),
-            string("@#&=*+-_.,:!?()/~'%;\$[]"), // 20.38+
+            string("@#&=*+-_.,:!?()/~'%;$"),
+            string("@#&=*+-_.,:!?()/~'%;$[]"), // 20.38+
         )
     )
 )

@@ -30,7 +30,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/reddit/patches/HideNavigationButtonsPatch;"
 
 private const val EXTENSION_HEADER_ITEM_INTERFACE =
-    "Lapp/morphe/extension/reddit/patches/HideNavigationButtonsPatch\$NavigationButtonInterface;"
+    $$"Lapp/morphe/extension/reddit/patches/HideNavigationButtonsPatch$NavigationButtonInterface;"
 
 @Suppress("unused")
 val hideNavigationButtonsPatch = bytecodePatch(

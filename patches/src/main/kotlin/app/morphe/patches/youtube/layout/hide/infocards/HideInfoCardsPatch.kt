@@ -50,7 +50,7 @@ val hideInfoCardsPatch = bytecodePatch(
 
         // Edit: This old non-litho code may be obsolete and no longer used by any supported versions.
         InfoCardsMethodCallFingerprint.let {
-            val invokeInterfaceIndex = it.instructionMatches.last().index
+            val invokeInterfaceIndex = it.instructionMatches[2].index
             it.method.apply {
                 val register = implementation!!.registerCount - 1
 

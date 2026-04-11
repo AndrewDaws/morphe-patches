@@ -49,7 +49,7 @@ internal val captionCookiesPatch = bytecodePatch(
                     "patch_setUrlRequestHeaders",
                     listOf(
                         ImmutableMethodParameter(
-                            "Lorg/chromium/net/UrlRequest\$Builder;",
+                            $$"Lorg/chromium/net/UrlRequest$Builder;",
                             null,
                             null
                         )

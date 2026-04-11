@@ -62,7 +62,7 @@ internal object PreferenceManagerFingerprint : Fingerprint(
             Opcode.MOVE_RESULT_OBJECT,
             location = MatchAfterImmediately()
         ),
-        newInstance("Lcom/reddit/screen/settings/preferences/PreferencesPresenter\$checkIfShouldShowImpressumOption$")
+        newInstance($$"Lcom/reddit/screen/settings/preferences/PreferencesPresenter$checkIfShouldShowImpressumOption$")
     )
 )
 

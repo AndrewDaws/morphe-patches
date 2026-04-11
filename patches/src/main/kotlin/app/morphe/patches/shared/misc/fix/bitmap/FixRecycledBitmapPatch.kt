@@ -22,10 +22,10 @@ private enum class MethodCall(
     override val methodReturnType: String,
 ) : IMethodCall {
     PutBitmapFramework(
-        "Landroid/media/MediaMetadata\$Builder;",
+        $$"Landroid/media/MediaMetadata$Builder;",
         "putBitmap",
         arrayOf("Ljava/lang/String;", "Landroid/graphics/Bitmap;"),
-        "Landroid/media/MediaMetadata\$Builder;",
+        $$"Landroid/media/MediaMetadata$Builder;",
     );
 }
 
