@@ -1,7 +1,7 @@
 package app.morphe.patches.music.layout.buttons
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterAnywhere
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.opcode
 import app.morphe.patches.shared.misc.mapping.ResourceType
@@ -29,8 +29,8 @@ internal object HistoryMenuItemFingerprint : Fingerprint(
     parameters = listOf("Landroid/view/Menu;"),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "history_menu_item"),
-        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterWithin(5)),
-        opcode(Opcode.RETURN_VOID, location = MatchAfterAnywhere())
+        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterImmediately()),
+        opcode(Opcode.RETURN_VOID, MatchAfterImmediately())
     ),
     custom = { _, classDef ->
         classDef.methods.count() == 5 || classDef.methods.count() == 4
@@ -43,10 +43,10 @@ internal object HistoryMenuItemOfflineTabFingerprint : Fingerprint(
     parameters = listOf("Landroid/view/Menu;"),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "offline_settings_menu_item"),
-        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterWithin(5)),
+        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterImmediately()),
         resourceLiteral(ResourceType.ID, "history_menu_item", location = MatchAfterWithin(15)),
-        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterWithin(5)),
-        opcode(Opcode.RETURN_VOID, location = MatchAfterAnywhere())
+        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterImmediately()),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately())
     )
 )
 

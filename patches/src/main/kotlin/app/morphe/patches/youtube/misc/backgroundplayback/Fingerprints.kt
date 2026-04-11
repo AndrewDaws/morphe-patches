@@ -1,6 +1,7 @@
 package app.morphe.patches.youtube.misc.backgroundplayback
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
@@ -48,6 +49,13 @@ internal object BackgroundPlaybackSettingsFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
     filters = listOf(
+        opcode(Opcode.INVOKE_VIRTUAL),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        opcode(Opcode.GOTO, location = MatchAfterImmediately()),
         resourceLiteral(ResourceType.STRING, "pref_background_and_offline_category")
     )
 )

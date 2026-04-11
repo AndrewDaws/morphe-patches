@@ -2,7 +2,7 @@ package app.morphe.patches.youtube.layout.hide.infocards
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterAnywhere
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.mapping.ResourceType
@@ -31,8 +31,8 @@ internal object InfoCardsIncognitoFingerprint : Fingerprint(
 internal object InfoCardsMethodCallFingerprint : Fingerprint(
     filters = listOf(
         opcode(Opcode.INVOKE_VIRTUAL),
-        opcode(Opcode.IGET_OBJECT, location = MatchAfterWithin(10)),
-        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterWithin(10)),
+        opcode(Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterImmediately()),
         resourceLiteral(ResourceType.ID, "info_cards_drawer_header", location = MatchAfterAnywhere())
     ),
     strings = listOf("Missing ControlsOverlayPresenter for InfoCards to work.")

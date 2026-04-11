@@ -135,10 +135,10 @@ internal object VideoQualityMenuOptionsFingerprint : Fingerprint(
     parameters = listOf("Landroid/content/Context", "L", "L"),
     filters = listOf(
         opcode(Opcode.CONST_4),
-        opcode(Opcode.CONST_4, location = MatchAfterWithin(5)),
-        opcode(Opcode.IF_EQZ, location = MatchAfterWithin(5)),
-        opcode(Opcode.IGET_BOOLEAN, location = MatchAfterWithin(10)),
-        opcode(Opcode.IF_NEZ, location = MatchAfterWithin(5)),
+        opcode(Opcode.CONST_4, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.IGET_BOOLEAN, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
         resourceLiteral(ResourceType.STRING, "video_quality_quick_menu_advanced_menu_description", location = MatchAfterAnywhere())
     )
 )
@@ -149,19 +149,19 @@ internal object VideoQualityMenuViewInflateFingerprint : Fingerprint(
     parameters = listOf("L", "L", "L"),
     filters = listOf(
         opcode(Opcode.INVOKE_SUPER),
-        opcode(Opcode.CONST, location = MatchAfterWithin(10)),
-        opcode(Opcode.CONST_4, location = MatchAfterWithin(5)),
-        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(5)),
+        opcode(Opcode.CONST, location = MatchAfterImmediately()),
+        opcode(Opcode.CONST_4, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        opcode(Opcode.CONST, location = MatchAfterWithin(10)),
-        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(5)),
+        opcode(Opcode.CONST, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        opcode(Opcode.CONST_16, location = MatchAfterWithin(10)),
-        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(5)),
-        opcode(Opcode.CONST, location = MatchAfterWithin(10)),
-        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(5)),
+        opcode(Opcode.CONST_16, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(Opcode.CONST, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
         opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
-        resourceLiteral(ResourceType.LAYOUT, "video_quality_bottom_sheet_list_fragment_title", location = MatchAfterAnywhere())
+        resourceLiteral(ResourceType.LAYOUT, "video_quality_bottom_sheet_list_fragment_title", location = MatchAfterWithin(10))
     )
 )
